@@ -11,7 +11,7 @@ contract TransactionLogger {
     address indexed sender,
     address indexed receiver,
     uint256 amount,
-    uint256 indexed timestamp
+    uint256 timestamp
   );
 
   // Function to send funds and record the transaction via an event
