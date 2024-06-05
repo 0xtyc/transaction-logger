@@ -1,9 +1,9 @@
-import { buildModule } from "@nomicfoundation/hardhat-ignition/modules"
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const TransactionLoggerModule = buildModule("TransactionLoggerModule", (m) => {
-  const txLogger = m.contract("TransactionLogger")
+  const txLogger = m.contract("TransactionLogger");
 
-  return { txLogger }
-})
+  return { txLogger };
+});
 
-export default TransactionLoggerModule
+export default TransactionLoggerModule;
