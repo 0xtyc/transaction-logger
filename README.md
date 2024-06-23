@@ -1,13 +1,12 @@
-# Sample Hardhat Project
+# Transaction Logger
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+This is a simple transaction logger application that logs transactions by interacting with this contract and emitting events. 
 
-Try running some of the following tasks:
+## Usage
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
+The users can call `sendFunds` or `sendMultiFunds` to make transactions, and we can keek track of these transactions easily by the emitted events via Moralis api. 
+
+## Deployment
+```
+hardhat ignition deploy ignition/modules/TransactionLogger.ts --network netowrkname --verify 
 ```
