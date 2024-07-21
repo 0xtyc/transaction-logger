@@ -19,11 +19,11 @@ contract TransactionLogger {
   );
 
   IERC20 private erc20Token;
-  uint256 public mininumAmount;
+  uint256 public minimumAmount;
 
-  constructor(address _usdtTokenAddress, uint256 _mininumAmount) {
+  constructor(address _usdtTokenAddress, uint256 _minimumAmount) {
     erc20Token = IERC20(_usdtTokenAddress);
-    mininumAmount = _mininumAmount;
+    minimumAmount = _minimumAmount;
   }
 
   function _makeTransaction(address sender, address receiver, uint256 amount) internal {
@@ -40,28 +40,25 @@ contract TransactionLogger {
   }
 
   // Function to send funds and record the transaction via an event
-  function sendFunds(address receiver, uint256 amount) public payable {
-    if (amount < mininumAmount) {
+  function sendFunds(address receiver, uint256 amount) public {
+    if (amount < minimumAmount) {
       revert TransactionLogger__MininumTransferAmountNotMet();
     }
     _makeTransaction(msg.sender, receiver, amount);
   }
 
   function sendMultiFunds(
-    address [] memory receivers,
+    address[] memory receivers,
     uint256[] memory amounts
-  ) public payable {
+  ) public {
     if (receivers.length != amounts.length) {
       revert TransactionLogger__MismatchedReceiversAndAmounts();
     }
 
-    for (uint256 i = 0; i < amounts.length; i++) {
-      if (amounts[i] < mininumAmount) {
+    for (uint256 i = 0; i < receivers.length; i++) {
+      if (amounts[i] < minimumAmount) {
         revert TransactionLogger__MininumTransferAmountNotMet();
       }
-    }
-
-    for (uint256 i = 0; i < receivers.length; i++) {
       _makeTransaction(msg.sender, receivers[i], amounts[i]);
     }
   }

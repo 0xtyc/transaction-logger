@@ -1,0 +1,6 @@
+{
+  "TransactionLoggerModule": {
+    "erc20Address": "0xEE002667E7B2A9c62E4E04970409Cb58866376D6",
+    "minAmount": "10000000"
+  }
+}
