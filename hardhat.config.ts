@@ -32,7 +32,7 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       sepolia: ETHERSCAN_API_KEY,
-      "OP Sepolia": OPTIMISM_SCAN_API_KEY,
+      "OP Mainnet": OPTIMISM_SCAN_API_KEY,
     },
     customChains: [
       {
@@ -41,6 +41,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: `https://api-sepolia-optimistic.etherscan.io/api/`,
           browserURL: "https://sepolia-optimism.etherscan.io/",
+        },
+      },
+      {
+        network: "OP Mainnet",
+        chainId: 10,
+        urls: {
+          apiURL: `https://api-optimistic.etherscan.io/api/`,
+          browserURL: "https://optimistic.etherscan.io/",
         },
       },
     ],
